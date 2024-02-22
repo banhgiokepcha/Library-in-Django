@@ -1,0 +1,26 @@
+{% extends 'template/base.html' %}
+{% block title %}
+{% endblock  %}
+
+{%block content%} 
+<ul> 
+    {% if book.cover %} 
+    <img src = "{{book.cover.url}}">
+    <hr> </hr>
+    {% else %}
+    <hr> </hr>
+    {% endif %}
+    <li> {{book.title}} </li>
+    <li> {{book.genre.all|join:", "}} </li>
+    {% if book.description %}
+    <p> {{book.description}} </p>
+    {% else %}
+    <p> TBA </p>
+    {% endif %}
+</ul>
+
+{%endblock%}
+
+
+
+

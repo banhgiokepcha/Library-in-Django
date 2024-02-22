@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <ul class="nav class='navbar navbar-expand-sm navbar-light bg-light justify-content-center">
+        <li>
+          <a class='navbar-brand' href='/'>
+              {% load static %}
+              <img src="{% static 'image/Open_Library_tight_logo.png' %}" alt='Web logo' style='width:80px' class='round-pill'>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/browse" id="navbarDropDown" role="button" data-bs-toggle="dropdown" aria-expand="flase">
+            Browse</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropDown">
+            <li><a class="dropdown-item" href="{% url 'books' %}"></a>Books</li> 
+            <li><a class="dropdown-item" href="{% url 'authors' %}"></a>Authors</li> 
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </li>
+    </ul>
+</body>
+</html>
